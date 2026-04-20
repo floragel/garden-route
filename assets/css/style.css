@@ -1620,7 +1620,7 @@ body { background: var(--white); }
 
 .testimonials {
   padding-block: 60px;
-  background-color: var(--white);
+  background-color: #f8f9fa; /* Subtle light grey */
   overflow: hidden;
 }
 
@@ -1723,7 +1723,7 @@ body { background: var(--white); }
 
 .map-container {
   position: relative;
-  background-image: url('../images/map-bg.png');
+  background-image: url('../images/google-sat.png');
   background-size: cover;
   background-position: center bottom;
   aspect-ratio: 8 / 5;
