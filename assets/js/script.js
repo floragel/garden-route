@@ -109,41 +109,51 @@ window.addEventListener("load", reveal);
 
 
 /**
- * Interactive Map Logic - Route Highlighting
+ * Manual Route Selection Logic
  */
-const packageCards = document.querySelectorAll(".package-card");
+const routeBtns = document.querySelectorAll(".route-btn");
 const mapPaths = document.querySelectorAll(".map-path");
 const mapMarkers = document.querySelectorAll(".map-marker");
 
-packageCards.forEach(card => {
-  card.addEventListener("mouseenter", function() {
-    const routeId = this.getAttribute("data-route-id");
-    const activePath = document.querySelector(`#route-${routeId}`);
-    
-    // Deactivate all paths
-    mapPaths.forEach(path => path.classList.remove("active"));
-    
-    // Activate target path
-    if (activePath) activePath.classList.add("active");
-
-    // Highlight relevant markers
-    mapMarkers.forEach(marker => {
-      const place = marker.getAttribute("data-place");
-      marker.classList.remove("highlight");
-      
-      if (routeId === "wilderness" && (place === "George" || place === "Wilderness")) {
-        marker.classList.add("highlight");
-      } else if (routeId === "knysna" && (place === "George" || place === "Wilderness" || place === "Knysna")) {
-        marker.classList.add("highlight");
-      }
-    });
+const updateRoute = function(routeId) {
+  // Update Buttons
+  routeBtns.forEach(btn => {
+    if (btn.getAttribute("data-route") === routeId) {
+      btn.classList.add("active");
+    } else {
+      btn.classList.remove("active");
+    }
   });
 
-  card.addEventListener("mouseleave", function() {
-    mapPaths.forEach(path => path.classList.remove("active"));
-    mapMarkers.forEach(marker => marker.classList.remove("highlight"));
+  // Update Paths
+  mapPaths.forEach(path => {
+    path.classList.remove("active");
+    if (routeId === "all" || path.id === `route-${routeId}`) {
+      path.classList.add("active");
+    }
+  });
+
+  // Update Markers
+  mapMarkers.forEach(marker => {
+    const place = marker.getAttribute("data-place");
+    marker.classList.remove("highlight");
+    
+    if (routeId === "all" || 
+       (routeId === "wilderness" && (place === "George" || place === "Wilderness")) ||
+       (routeId === "knysna" && (place === "George" || place === "Wilderness" || place === "Knysna"))) {
+      marker.classList.add("highlight");
+    }
+  });
+}
+
+routeBtns.forEach(btn => {
+  btn.addEventListener("click", function() {
+    updateRoute(this.getAttribute("data-route"));
   });
 });
+
+// Initialize with Overview
+window.addEventListener("load", () => updateRoute("all"));
 
 
 /**

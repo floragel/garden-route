@@ -1716,3 +1716,69 @@ body { background: var(--white); }
   font-size: 13px;
   color: var(--bright-navy-blue);
 }
+
+/*-----------------------------------*\
+  #MAP REALISM & SELECTOR
+\*-----------------------------------*/
+
+.map-container {
+  position: relative;
+  background-image: url('../images/map-bg.png');
+  background-size: cover;
+  background-position: center bottom;
+  aspect-ratio: 8 / 5;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.route-map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.route-selector {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.route-btn {
+  background: var(--white);
+  color: var(--gunmetal);
+  font-family: var(--ff-montserrat);
+  font-size: 14px;
+  font-weight: var(--fw-600);
+  padding: 10px 25px;
+  border-radius: 50px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.route-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.route-btn.active {
+  background: var(--bright-navy-blue);
+  color: var(--white);
+  border-color: var(--bright-navy-blue);
+}
+
+.marker-label {
+  paint-order: stroke;
+  stroke: var(--white);
+  stroke-width: 3px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  font-weight: 800;
+  fill: var(--gunmetal);
+}
