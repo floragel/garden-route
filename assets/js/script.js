@@ -109,6 +109,44 @@ window.addEventListener("load", reveal);
 
 
 /**
+ * Interactive Map Logic - Route Highlighting
+ */
+const packageCards = document.querySelectorAll(".package-card");
+const mapPaths = document.querySelectorAll(".map-path");
+const mapMarkers = document.querySelectorAll(".map-marker");
+
+packageCards.forEach(card => {
+  card.addEventListener("mouseenter", function() {
+    const routeId = this.getAttribute("data-route-id");
+    const activePath = document.querySelector(`#route-${routeId}`);
+    
+    // Deactivate all paths
+    mapPaths.forEach(path => path.classList.remove("active"));
+    
+    // Activate target path
+    if (activePath) activePath.classList.add("active");
+
+    // Highlight relevant markers
+    mapMarkers.forEach(marker => {
+      const place = marker.getAttribute("data-place");
+      marker.classList.remove("highlight");
+      
+      if (routeId === "wilderness" && (place === "George" || place === "Wilderness")) {
+        marker.classList.add("highlight");
+      } else if (routeId === "knysna" && (place === "George" || place === "Wilderness" || place === "Knysna")) {
+        marker.classList.add("highlight");
+      }
+    });
+  });
+
+  card.addEventListener("mouseleave", function() {
+    mapPaths.forEach(path => path.classList.remove("active"));
+    mapMarkers.forEach(marker => marker.classList.remove("highlight"));
+  });
+});
+
+
+/**
  * View Itinerary - Smooth Scroll
  */
 const viewItineraryBtn = document.querySelector("[data-view-itinerary]");
@@ -175,10 +213,10 @@ const packageData = {
     `
   },
   "Knysna": {
-    title: "KNYSNA LAGOON LUXURY: THE JEWEL OF SOUTH AFRICA",
+    title: "KNYSNA LAGOON LUXURY & MARINE SAFARI",
     details: `
       <div class="modal-section" style="margin-bottom: 30px; text-align: center;">
-        <p><em>A sophisticated immersion into the artistic and natural wonders of Knysna.</em></p>
+        <p><em>A sophisticated immersion into the artistic wonders and wildlife of Knysna.</em></p>
       </div>
 
       <div class="timeline">
@@ -194,6 +232,15 @@ const packageData = {
         <div class="timeline-item">
           <p class="timeline-day">Day 02</p>
           <div class="timeline-content">
+            <img src="./assets/images-south_africa/beautiful-coastal-landscape-garden-route-south-africa-408813550.jpg.webp" class="timeline-img" alt="Marine Safari">
+            <h5><strong>Ocean Majesty: Marine Safari</strong></h5>
+            <p>A full-day <strong>Ocean Quest</strong> to witness Bottlenose Dolphins and visiting whales in the crystal-clear ocean. This exclusive experience is now part of our signature Knysna itinerary.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <p class="timeline-day">Day 03</p>
+          <div class="timeline-content">
             <img src="./assets/images-south_africa/image.handler.php.jpeg" class="timeline-img" alt="Forest Walk">
             <h5><strong>Ancient Forests & Island Mornings</strong></h5>
             <p>A morning walking tour of the <strong>Knysna Forest</strong>, home to elusive elephants. Afternoon spent exploring the shops and cafes of <em>Thesen Islands</em>.</p>
@@ -201,11 +248,11 @@ const packageData = {
         </div>
 
         <div class="timeline-item">
-          <p class="timeline-day">Day 03</p>
+          <p class="timeline-day">Day 04</p>
           <div class="timeline-content">
              <img src="./assets/images-south_africa/Garden-Route-Suedafrika-13.jpg" class="timeline-img" alt="Panoramic Knysna">
-            <h5><strong>Nature Reserve & Panoramic Views</strong></h5>
-            <p>4x4 excursion to <a href="https://www.featherbednature.co.za/" target="_blank"><strong>Featherbed Nature Reserve</strong></a>. Take in the panoramic views of the Indian Ocean before your luxury shuttle departure.</p>
+            <h5><strong>Nature Reserve & Panoramic Departure</strong></h5>
+            <p>4x4 excursion to <a href="https://www.featherbednature.co.za/" target="_blank"><strong>Featherbed Nature Reserve</strong></a> before your luxury shuttle departure.</p>
           </div>
         </div>
       </div>
@@ -213,48 +260,6 @@ const packageData = {
       <div class="modal-section" style="margin-top:20px; text-align:center; padding: 20px; background: var(--gunmetal); color: white; border-radius: 15px;">
         <p style="font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px;">Executive Rate</p>
         <p style="font-size: 24px; font-weight: 800; color: #fff;">$480 USD <span style="font-size: 16px; font-weight: 400;">/ person</span></p>
-      </div>
-    `
-  },
-  "Plettenberg": {
-    title: "PLETT OCEAN SAFARI: MARINE MAJESTY & WILDLIFE",
-    details: `
-      <div class="modal-section" style="margin-bottom: 30px; text-align: center;">
-        <p><em>Experience the wild side of the Garden Route with unrivaled ocean and forest encounters.</em></p>
-      </div>
-
-      <div class="timeline">
-        <div class="timeline-item">
-          <p class="timeline-day">Day 01</p>
-          <div class="timeline-content">
-             <img src="./assets/images-south_africa/beautiful-coastal-landscape-garden-route-south-africa-408813550.jpg.webp" class="timeline-img" alt="Ocean View">
-            <h5><strong>Ocean Whispers</strong></h5>
-            <p>Check in at <a href="https://www.theplettenberghotel.com/" target="_blank"><strong>The Plettenberg Hotel</strong></a>. Afternoon <em>Marine Safari</em> to witness Bottlenose Dolphins and visiting whales in the crystal-clear ocean.</p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <p class="timeline-day">Day 02</p>
-          <div class="timeline-content">
-             <img src="./assets/images-south_africa/istockphoto-154926644-612x612.jpg" class="timeline-img" alt="Robberg Hike">
-            <h5><strong>The Robberg Peninsula</strong></h5>
-            <p>Full-day guided hike of the <strong>Robberg Nature Reserve</strong>. Discover prehistoric caves and a thriving Cape Fur Seal colony.</p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <p class="timeline-day">Day 03</p>
-          <div class="timeline-content">
-             <img src="./assets/images-south_africa/360_F_118127079_vJqA2O84o7BasDhf6naYZ2mdg4eUDwTz.jpg" class="timeline-img" alt="Birds of Eden">
-            <h5><strong>Sanctuaries & Sky</strong></h5>
-            <p>Morning at <a href="https://www.birdsofeden.co.za/" target="_blank"><strong>Birds of Eden</strong></a> (the world's largest free-flight aviary). Direct flight departure from Plettenberg Bay Airport.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="modal-section" style="margin-top:20px; text-align:center; padding: 20px; background: var(--gunmetal); color: white; border-radius: 15px;">
-        <p style="font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px;">Elite Rate</p>
-        <p style="font-size: 24px; font-weight: 800; color: #fff;">$650 USD <span style="font-size: 16px; font-weight: 400;">/ person</span></p>
       </div>
     `
   }

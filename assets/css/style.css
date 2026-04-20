@@ -1553,3 +1553,63 @@ body { background: var(--white); }
     grid-template-columns: 1fr;
   }
 }
+
+/*-----------------------------------*\
+  #MAP SECTION
+\*-----------------------------------*/
+
+.map-section {
+  padding-block: 60px;
+  background-color: var(--cultured);
+}
+
+.map-container {
+  background: var(--white);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  margin-top: 30px;
+}
+
+.route-map {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
+}
+
+.marker-label {
+  font-family: var(--ff-montserrat);
+  font-size: 14px;
+  font-weight: 600;
+  fill: var(--gunmetal);
+}
+
+.map-path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  transition: stroke-dashoffset 2s ease;
+  opacity: 0;
+}
+
+.map-path.active {
+  stroke-dashoffset: 0;
+  opacity: 1;
+}
+
+.map-marker circle {
+  transition: r 0.3s ease, fill 0.3s ease;
+}
+
+.map-marker.highlight circle {
+  r: 10;
+  fill: var(--bright-navy-blue);
+}
+
+/* Adjusting package list for 2 columns */
+@media (min-width: 992px) {
+  .package-list {
+    grid-template-columns: repeat(2, 1fr) !important;
+    max-width: 800px;
+    margin-inline: auto;
+  }
+}
