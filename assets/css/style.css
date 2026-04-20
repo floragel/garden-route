@@ -1571,38 +1571,19 @@ body { background: var(--white); }
   margin-top: 30px;
 }
 
-.route-map {
-  width: 100%;
-  height: auto;
-  filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
-}
-
-.marker-label {
+.map-tooltip {
+  background-color: var(--gunmetal);
+  color: var(--white);
+  border: none;
+  border-radius: 5px;
   font-family: var(--ff-montserrat);
-  font-size: 14px;
   font-weight: 600;
-  fill: var(--gunmetal);
+  padding: 5px 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-.map-path {
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 1000;
-  transition: stroke-dashoffset 2s ease;
-  opacity: 0;
-}
-
-.map-path.active {
-  stroke-dashoffset: 0;
-  opacity: 1;
-}
-
-.map-marker circle {
-  transition: r 0.3s ease, fill 0.3s ease;
-}
-
-.map-marker.highlight circle {
-  r: 10;
-  fill: var(--bright-navy-blue);
+.map-tooltip::before {
+  border-top-color: var(--gunmetal) !important;
 }
 
 /* Adjusting package list for 2 columns */

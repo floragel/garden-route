@@ -109,51 +109,119 @@ window.addEventListener("load", reveal);
 
 
 /**
- * Manual Route Selection Logic
+ * Leaflet Interactive Satellite Map Logic
  */
 const routeBtns = document.querySelectorAll(".route-btn");
-const mapPaths = document.querySelectorAll(".map-path");
-const mapMarkers = document.querySelectorAll(".map-marker");
+let map;
+let activePolyline = null;
+let activeMarkers = [];
 
-const updateRoute = function(routeId) {
-  // Update Buttons
-  routeBtns.forEach(btn => {
-    if (btn.getAttribute("data-route") === routeId) {
-      btn.classList.add("active");
-    } else {
-      btn.classList.remove("active");
-    }
-  });
+// Base coordinates for markers
+const locations = {
+  george: [-34.005, 22.381],
+  wilderness: [-33.996, 22.574],
+  knysna: [-34.035, 23.048]
+};
 
-  // Update Paths
-  mapPaths.forEach(path => {
-    path.classList.remove("active");
-    if (routeId === "all" || path.id === `route-${routeId}`) {
-      path.classList.add("active");
-    }
-  });
-
-  // Update Markers
-  mapMarkers.forEach(marker => {
-    const place = marker.getAttribute("data-place");
-    marker.classList.remove("highlight");
-    
-    if (routeId === "all" || 
-       (routeId === "wilderness" && (place === "George" || place === "Wilderness")) ||
-       (routeId === "knysna" && (place === "George" || place === "Wilderness" || place === "Knysna"))) {
-      marker.classList.add("highlight");
-    }
-  });
-}
-
-routeBtns.forEach(btn => {
-  btn.addEventListener("click", function() {
-    updateRoute(this.getAttribute("data-route"));
-  });
+// Custom Leaflet Icon
+const customIcon = L.divIcon({
+  className: 'custom-div-icon',
+  html: "<div style='background-color: var(--bright-navy-blue); width: 14px; height: 14px; border-radius: 50%; border: 3px solid white; box-shadow: 0 0 5px rgba(0,0,0,0.5);'></div>",
+  iconSize: [14, 14],
+  iconAnchor: [7, 7]
 });
 
-// Initialize with Overview
-window.addEventListener("load", () => updateRoute("all"));
+// Initialize Map only when the DOM is fully loaded and map container exists
+window.addEventListener("load", () => {
+  const mapElement = document.getElementById('leaflet-map');
+  if (mapElement) {
+    // Initialize Leaflet Map
+    map = L.map('leaflet-map', {
+      scrollWheelZoom: false // Disable scroll zoom for better website UX
+    }).setView(locations.wilderness, 10);
+
+    // Add Esri World Imagery (High-Res Satellite)
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
+      maxZoom: 17
+    }).addTo(map);
+
+    // Function to draw route and zoom
+    const updateRoute = function(routeId) {
+      // Clear previous routes/markers
+      if (activePolyline) map.removeLayer(activePolyline);
+      activeMarkers.forEach(m => map.removeLayer(m));
+      activeMarkers = [];
+      
+      // Update Buttons UI
+      routeBtns.forEach(btn => {
+        if (btn.getAttribute("data-route") === routeId) {
+          btn.classList.add("active");
+        } else {
+          btn.classList.remove("active");
+        }
+      });
+
+      let routeCoords = [];
+      let markersToShow = [];
+      
+      if (routeId === "all") {
+        routeCoords = routeData.knysna; // Show the full extent
+        markersToShow = [
+          { coord: locations.george, label: "George (GRJ)" },
+          { coord: locations.wilderness, label: "Wilderness" },
+          { coord: locations.knysna, label: "Knysna" }
+        ];
+      } else if (routeId === "wilderness") {
+        routeCoords = routeData.wilderness;
+        markersToShow = [
+          { coord: locations.george, label: "George (GRJ)" },
+          { coord: locations.wilderness, label: "Wilderness" }
+        ];
+      } else if (routeId === "knysna") {
+        routeCoords = routeData.knysna;
+        markersToShow = [
+          { coord: locations.george, label: "George (GRJ)" },
+          { coord: locations.wilderness, label: "Wilderness" },
+          { coord: locations.knysna, label: "Knysna" }
+        ];
+      }
+
+      // Draw Polyline
+      activePolyline = L.polyline(routeCoords, {
+        color: '#0d6efd', // var(--bright-navy-blue)
+        weight: 5,
+        opacity: 0.8,
+        lineJoin: 'round'
+      }).addTo(map);
+
+      // Add Markers
+      markersToShow.forEach(m => {
+        const marker = L.marker(m.coord, { icon: customIcon }).addTo(map);
+        marker.bindTooltip(m.label, { permanent: true, direction: "top", offset: [0, -10], className: 'map-tooltip' });
+        activeMarkers.push(marker);
+      });
+
+      // Animate Camera to fit bounds
+      map.flyToBounds(activePolyline.getBounds(), {
+        padding: [50, 50],
+        duration: 2.5,
+        easeLinearity: 0.25
+      });
+    };
+
+    // Attach click listeners to UI buttons
+    routeBtns.forEach(btn => {
+      btn.addEventListener("click", function() {
+        updateRoute(this.getAttribute("data-route"));
+      });
+    });
+
+    // Start with overview
+    // Add small delay to ensure container dims are computed
+    setTimeout(() => updateRoute("all"), 500); 
+  }
+});
 
 
 /**

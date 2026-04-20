@@ -13,6 +13,11 @@
   <link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/png">
 
   <!-- 
+    - Leaflet CSS
+  -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+  <!-- 
     - custom css link
   -->
   <link rel="stylesheet" href="./assets/css/style.css">
@@ -147,28 +152,8 @@
             <button class="route-btn" data-route="knysna">The Knysna Route</button>
           </div>
           
-          <div class="map-container">
-            <svg viewBox="0 0 800 500" class="route-map" id="garden-route-svg">
-              <!-- Route Paths (Animated) -->
-              <path id="route-wilderness" class="map-path" d="M 100 320 L 380 340" fill="none" stroke="var(--bright-navy-blue)" stroke-width="6" stroke-linecap="round" />
-              <path id="route-knysna" class="map-path" d="M 100 320 L 380 340 L 680 200" fill="none" stroke="var(--bright-navy-blue)" stroke-width="6" stroke-linecap="round" />
-              
-              <!-- Map Points (The "Pauses") -->
-              <g class="map-marker" data-place="George">
-                <circle cx="100" cy="320" r="8" fill="var(--bright-navy-blue)" stroke="white" stroke-width="3" />
-                <text x="80" y="350" class="marker-label">George (Airport)</text>
-              </g>
-
-              <g class="map-marker" data-place="Wilderness">
-                <circle cx="380" cy="340" r="8" fill="var(--bright-navy-blue)" stroke="white" stroke-width="3" />
-                <text x="360" y="320" class="marker-label">Wilderness</text>
-              </g>
-
-              <g class="map-marker" data-place="Knysna">
-                <circle cx="680" cy="200" r="8" fill="var(--bright-navy-blue)" stroke="white" stroke-width="3" />
-                <text x="660" y="180" class="marker-label">Knysna Lagoon</text>
-              </g>
-            </svg>
+          <div class="map-container" style="border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+            <div id="leaflet-map" style="height: 500px; width: 100%; z-index: 1;"></div>
           </div>
           
           <p class="section-text" style="margin-top: 20px;">
@@ -761,6 +746,14 @@
       </div>
     </div>
   </div>
+
+  <!-- 
+    - Leaflet JS
+  -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <!-- Route Coordinate Data -->
+  <script src="./assets/js/route-data.js"></script>
 
   <!-- 
     - custom js link
