@@ -144,10 +144,10 @@ window.addEventListener("load", () => {
       scrollWheelZoom: false // Disable scroll zoom for better website UX
     }).setView(locations.wilderness, 10);
 
-    // Add CartoDB Positron (Clean Vector Map)
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-      maxZoom: 19
+    // Add Esri World Imagery (High-Res Satellite)
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
+      maxZoom: 17
     }).addTo(map);
 
     // Function to draw route and zoom
@@ -262,7 +262,7 @@ const packageData = {
     title: "THE WILD SPIRIT PACKAGE",
     details: `
       <div class="modal-section" style="margin-bottom: 30px; text-align: center;">
-        <p><em>Focus: Adrenaline, raw landscapes, and ecological preservation.</em></p>
+        <p><em>This 3-day trip is for anyone who wants an adrenaline rush and raw landscapes.</em></p>
       </div>
 
       <div class="timeline">
@@ -271,8 +271,8 @@ const packageData = {
           <div class="timeline-content">
             <img src="./assets/images-south_africa/images-2.jpeg" class="timeline-img" alt="Wilderness Canoeing">
             <h5><strong>Wilderness & The Sky</strong></h5>
-            <p>Arrive in George via <a href="https://www.flysaa.com/" target="_blank" style="text-decoration:underline;">South African Airways</a>. Head to Wilderness for a morning of canoeing on the Touw River. In the afternoon, paraglide from the <a href="https://wildernessresort.co.za/map-of-africa/" target="_blank" style="text-decoration:underline;">"Map of Africa" viewpoint</a>.</p>
-            <p style="margin-top: 10px; font-size: 13px; color: var(--bright-navy-blue);">🍽️ <strong>Eat:</strong> <a href="https://www.tripadvisor.com/" target="_blank" style="text-decoration:underline;">Beejha Eats</a> (Organic, farm-to-table).</p>
+            <p>We start with canoeing on the Touw River and paragliding from the <a href="https://wildernessresort.co.za/map-of-africa/" target="_blank" style="text-decoration:underline;">"Map of Africa" viewpoint</a>.</p>
+            <p style="margin-top: 10px; font-size: 13px; color: var(--bright-navy-blue);">🍽️ <strong>We'll eat at</strong> <a href="https://www.tripadvisor.com/" target="_blank" style="text-decoration:underline;">Beejha Eats</a> for some organic, farm-to-table food.</p>
           </div>
         </div>
 
@@ -281,8 +281,7 @@ const packageData = {
           <div class="timeline-content">
              <img src="./assets/images-south_africa/beautiful-coastal-landscape-garden-route-south-africa-408813550.jpg.webp" class="timeline-img" alt="Robberg">
             <h5><strong>Robberg Marine Safari</strong></h5>
-            <p>Drive to Plettenberg Bay. Hike the 9km <a href="https://www.capenature.co.za/reserves/robberg-nature-reserve" target="_blank" style="text-decoration:underline;">Robberg Peninsula loop</a>—a World Heritage site. Look down from the cliffs to see great white sharks and Cape fur seals.</p>
-             <p style="margin-top: 10px; font-size: 13px; color: var(--bright-navy-blue);">🍽️ <strong>Eat:</strong> <a href="https://www.thefatfish.co.za/" target="_blank" style="text-decoration:underline;">The Fat Fish</a> (Sustainable seafood).</p>
+            <p>We head to Plettenberg Bay to hike the <a href="https://www.capenature.co.za/reserves/robberg-nature-reserve" target="_blank" style="text-decoration:underline;">Robberg Peninsula</a>. If you look down from the cliffs, you can actually see great white sharks and Cape fur seals in the water.</p>
           </div>
         </div>
 
@@ -291,18 +290,18 @@ const packageData = {
           <div class="timeline-content">
              <img src="./assets/images-south_africa/360_F_118127079_vJqA2O84o7BasDhf6naYZ2mdg4eUDwTz.jpg" class="timeline-img" alt="Tsitsikamma">
             <h5><strong>Tsitsikamma Adrenaline</strong></h5>
-            <p>Visit <a href="https://www.sanparks.org/parks/garden-route/camps/storms-river" target="_blank" style="text-decoration:underline;">Storms River Mouth</a>. Walk the suspension bridge or take a "Blackwater Tubing" trip down the gorge.</p>
+            <p>We’ll visit <a href="https://www.sanparks.org/parks/garden-route/camps/storms-river" target="_blank" style="text-decoration:underline;">Storms River Mouth</a> to walk the suspension bridge or go "Blackwater Tubing" down the gorge.</p>
             <div style="background: rgba(0,0,0,0.05); padding: 10px; border-left: 3px solid var(--bright-navy-blue); margin-top: 10px;">
-              <p style="font-size: 13px; margin:0;"><strong>📚 Historical Note:</strong> Learn how these forests were saved from the 19th-century timber rush to become a sanctuary for biodiversity.</p>
+              <p style="font-size: 13px; margin:0;"><strong>📚 History Note:</strong> You’ll learn how these forests were almost destroyed by the 19th-century timber rush before they were saved to become a sanctuary for biodiversity.</p>
             </div>
           </div>
         </div>
       </div>
 
       <div class="modal-section" style="margin-top:20px; text-align:center; padding: 20px; background: var(--gunmetal); color: white; border-radius: 15px;">
-        <p style="font-size: 14px; text-transform: uppercase;">Accommodation: <a href="https://www.viewshotel.co.za/" target="_blank" style="color:var(--bright-navy-blue); font-weight:800; text-decoration:underline;">Views Boutique Hotel & Spa</a></p>
+        <p style="font-size: 14px; text-transform: uppercase;">Accommodation: <a href="https://www.viewshotel.co.za/" target="_blank" style="color:var(--bright-navy-blue); font-weight:800; text-decoration:underline; pointer-events: auto;">Views Boutique Hotel & Spa</a></p>
         <p style="font-size: 24px; font-weight: 800; color: #fff;">$3,300 CAD <span style="font-size: 16px; font-weight: 400;">/ person (inc. flights)</span></p>
-        <a href="https://www.aircanada.com/" target="_blank" class="btn btn-primary" style="margin-top:15px; margin-inline:auto; display:inline-block;">Check Flights from YUL</a>
+        <a href="https://www.aircanada.com/" target="_blank" class="btn btn-primary" style="margin-top:15px; margin-inline:auto; display:inline-block; pointer-events: auto;">Check Flights from YUL</a>
       </div>
     `
   },
@@ -310,7 +309,7 @@ const packageData = {
     title: "HERITAGE & MEMORY PACKAGE",
     details: `
       <div class="modal-section" style="margin-bottom: 30px; text-align: center;">
-        <p><em>Focus: Cultural roots, colonial history, and the path to reconciliation.</em></p>
+        <p><em>This package focuses on cultural roots and the path to reconciliation.</em></p>
       </div>
 
       <div class="timeline">
@@ -319,10 +318,9 @@ const packageData = {
           <div class="timeline-content">
             <img src="./assets/images-south_africa/image.handler.php.jpeg" class="timeline-img" alt="Mossel Bay">
             <h5><strong>Mossel Bay – The First Encounter</strong></h5>
-            <p>Visit the <a href="https://www.diasmuseum.co.za/" target="_blank" style="text-decoration:underline;">Bartolomeu Dias Museum Complex</a>.</p>
+            <p>We’ll visit the <a href="https://www.diasmuseum.co.za/" target="_blank" style="text-decoration:underline;">Bartolomeu Dias Museum</a>.</p>
             <div style="background: rgba(0,0,0,0.05); padding: 10px; border-left: 3px solid var(--bright-navy-blue); margin-top: 10px; margin-bottom: 10px;">
-              <p style="font-size: 13px; margin:0; margin-bottom: 5px;"><strong>📚 Historical Event:</strong> The 1488 landing of Portuguese explorers and their first interactions with the indigenous Khoikhoi people.</p>
-              <p style="font-size: 13px; margin:0;"><strong>Why it matters:</strong> This was the "Big Bang" of modern South African history.</p>
+              <p style="font-size: 13px; margin:0;"><strong>📚 History Note:</strong> This is where Portuguese explorers first landed in 1488 and met the indigenous Khoikhoi people. It’s basically the "Big Bang" of modern South African history.</p>
             </div>
              <p style="font-size: 13px; color: var(--bright-navy-blue);">🍽️ <strong>Eat:</strong> <a href="https://kaai4.co.za/" target="_blank" style="text-decoration:underline;">Kaai 4 Braai Restaurant</a> (Traditional open-fire cooking).</p>
           </div>
@@ -333,10 +331,9 @@ const packageData = {
           <div class="timeline-content">
             <img src="./assets/images-south_africa/view-from-rim-flow-pool.jpg" class="timeline-img" alt="Knysna Timber">
             <h5><strong>Knysna – Timber & Toil</strong></h5>
-            <p>Explore the <a href="https://www.visitknysna.co.za/explore/knysna-heads/" target="_blank" style="text-decoration:underline;">Knysna Heads</a> and the Millwood Gold Fields.</p>
+            <p>We’ll explore the <a href="https://www.visitknysna.co.za/explore/knysna-heads/" target="_blank" style="text-decoration:underline;">Knysna Heads</a>.</p>
             <div style="background: rgba(0,0,0,0.05); padding: 10px; border-left: 3px solid var(--bright-navy-blue); margin-top: 10px;">
-              <p style="font-size: 13px; margin:0; margin-bottom: 5px;"><strong>📚 Historical Event:</strong> The 19th-century timber industry that shaped the region's economy but also led to strict social hierarchies.</p>
-              <p style="font-size: 13px; margin:0;"><strong>Then vs Now:</strong> See how former industrial sites have been reclaimed as cultural hubs.</p>
+              <p style="font-size: 13px; margin:0;"><strong>📚 History Note:</strong> We'll learn how the 19th-century timber industry shaped the economy but also created strict social hierarchies. We’ll stay at The Turbine Hotel, which is an old power plant that was reclaimed as a cultural hub.</p>
             </div>
           </div>
         </div>
@@ -346,15 +343,15 @@ const packageData = {
           <div class="timeline-content">
             <img src="./assets/images-south_africa/Garden-Route-Suedafrika-13.jpg" class="timeline-img" alt="Oudtshoorn">
             <h5><strong>Oudtshoorn – The Ostrich Palaces</strong></h5>
-            <p>Drive through the Outeniqua Pass to see the "Ostrich Palaces" built by 19th-century feather barons. Visit the <a href="https://www.cpnelmuseum.co.za/" target="_blank" style="text-decoration:underline;">CP Nel Museum</a> to understand the Jewish and Afrikaans heritage of the Karoo.</p>
+            <p>We’ll drive through the Outeniqua Pass to see "Ostrich Palaces" built by wealthy feather barons in the 1800s and visit the <a href="https://www.cpnelmuseum.co.za/" target="_blank" style="text-decoration:underline;">CP Nel Museum</a> to understand the Jewish and Afrikaans heritage of the area.</p>
           </div>
         </div>
       </div>
 
       <div class="modal-section" style="margin-top:20px; text-align:center; padding: 20px; background: var(--gunmetal); color: white; border-radius: 15px;">
-        <p style="font-size: 14px; text-transform: uppercase;">Accommodation: <a href="https://turbinehotel.co.za/" target="_blank" style="color:var(--bright-navy-blue); font-weight:800; text-decoration:underline;">The Turbine Hotel & Spa (Knysna)</a></p>
+        <p style="font-size: 14px; text-transform: uppercase;">Accommodation: <a href="https://turbinehotel.co.za/" target="_blank" style="color:var(--bright-navy-blue); font-weight:800; text-decoration:underline; pointer-events:auto;">The Turbine Hotel & Spa</a></p>
         <p style="font-size: 24px; font-weight: 800; color: #fff;">$3,100 CAD <span style="font-size: 16px; font-weight: 400;">/ person (inc. flights)</span></p>
-         <a href="https://www.aircanada.com/" target="_blank" class="btn btn-primary" style="margin-top:15px; margin-inline:auto; display:inline-block;">Check Flights from YUL</a>
+         <a href="https://www.aircanada.com/" target="_blank" class="btn btn-primary" style="margin-top:15px; margin-inline:auto; display:inline-block; pointer-events:auto;">Check Flights from YUL</a>
       </div>
     `
   }
