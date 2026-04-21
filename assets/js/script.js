@@ -119,8 +119,12 @@ let activeMarkers = [];
 // Base coordinates for markers
 const locations = {
   george: [-34.005, 22.381],
+  mossel_bay: [-34.183, 22.146],
+  oudtshoorn: [-33.585, 22.201],
   wilderness: [-33.996, 22.574],
-  knysna: [-34.035, 23.048]
+  knysna: [-34.035, 23.048],
+  plett: [-34.058, 23.371],
+  tsitsikamma: [-33.972, 23.883]
 };
 
 // Custom Leaflet Icon
@@ -166,24 +170,30 @@ window.addEventListener("load", () => {
       let markersToShow = [];
       
       if (routeId === "all") {
-        routeCoords = routeData.knysna; // Show the full extent
+        routeCoords = [...routeData.wilderness, ...routeData.knysna]; 
         markersToShow = [
           { coord: locations.george, label: "George (GRJ)" },
+          { coord: locations.mossel_bay, label: "Mossel Bay" },
+          { coord: locations.oudtshoorn, label: "Oudtshoorn" },
           { coord: locations.wilderness, label: "Wilderness" },
-          { coord: locations.knysna, label: "Knysna" }
+          { coord: locations.plett, label: "Plettenberg Bay" },
+          { coord: locations.tsitsikamma, label: "Tsitsikamma" }
         ];
-      } else if (routeId === "wilderness") {
+      } else if (routeId === "wilderness") { // The Wild Spirit
         routeCoords = routeData.wilderness;
         markersToShow = [
-          { coord: locations.george, label: "George (GRJ)" },
-          { coord: locations.wilderness, label: "Wilderness" }
+          { coord: locations.george, label: "George" },
+          { coord: locations.wilderness, label: "Wilderness" },
+          { coord: locations.plett, label: "Robberg (Plett)" },
+          { coord: locations.tsitsikamma, label: "Storms River" }
         ];
-      } else if (routeId === "knysna") {
+      } else if (routeId === "knysna") { // Heritage & Memory
         routeCoords = routeData.knysna;
         markersToShow = [
-          { coord: locations.george, label: "George (GRJ)" },
-          { coord: locations.wilderness, label: "Wilderness" },
-          { coord: locations.knysna, label: "Knysna" }
+          { coord: locations.george, label: "George" },
+          { coord: locations.mossel_bay, label: "Mossel Bay" },
+          { coord: locations.knysna, label: "Knysna" },
+          { coord: locations.oudtshoorn, label: "Oudtshoorn" }
         ];
       }
 
@@ -249,95 +259,100 @@ const packageBtns = document.querySelectorAll("[data-package-btn]");
 
 const packageData = {
   "Wilderness": {
-    title: "THE WILDERNESS ESCAPE: COZY COASTAL BLISS",
+    title: "THE WILD SPIRIT PACKAGE",
     details: `
       <div class="modal-section" style="margin-bottom: 30px; text-align: center;">
-        <p><em>Experience a refined journey where nature meets luxury in the heart of the Garden Route.</em></p>
+        <p><em>Focus: Adrenaline, raw landscapes, and ecological preservation.</em></p>
       </div>
 
       <div class="timeline">
         <div class="timeline-item">
           <p class="timeline-day">Day 01</p>
           <div class="timeline-content">
-            <img src="./assets/images-south_africa/Garden-Route-Suedafrika-13.jpg" class="timeline-img" alt="Coastal Road">
-            <h5><strong>Arrival & Coastal Sunset</strong></h5>
-            <p>Direct flight to George Airport followed by a private transfer to <a href="https://www.viewshotel.co.za/" target="_blank"><strong>Views Boutique Hotel & Spa</strong></a>. Relax with signature welcome drinks as you overlook the dolphin-active bay.</p>
+            <img src="./assets/images-south_africa/images-2.jpeg" class="timeline-img" alt="Wilderness Canoeing">
+            <h5><strong>Wilderness & The Sky</strong></h5>
+            <p>Arrive in George. Head to Wilderness for a morning of canoeing on the Touw River. In the afternoon, paraglide from the "Map of Africa" viewpoint.</p>
+            <p style="margin-top: 10px; font-size: 13px; color: var(--bright-navy-blue);">🍽️ <strong>Eat:</strong> Beejha Eats (Organic, farm-to-table).</p>
           </div>
         </div>
 
         <div class="timeline-item">
           <p class="timeline-day">Day 02</p>
           <div class="timeline-content">
-             <img src="./assets/images-south_africa/images-2.jpeg" class="timeline-img" alt="Canoeing">
-            <h5><strong>Adventure & Cultural Feast</strong></h5>
-            <p>Morning <em>Guided Canoeing</em> on the <a href="https://www.visitknysna.co.za/kaaimans-river/" target="_blank">Kaaimans River</a> through ancient riverbeds. In the evening, enjoy a <strong>Traditional South African Braai</strong> featuring boerewors and authentic local side-dishes.</p>
+             <img src="./assets/images-south_africa/beautiful-coastal-landscape-garden-route-south-africa-408813550.jpg.webp" class="timeline-img" alt="Robberg">
+            <h5><strong>Robberg Marine Safari</strong></h5>
+            <p>Drive to Plettenberg Bay. Hike the 9km Robberg Peninsula loop—a World Heritage site. Look down from the cliffs to see great white sharks and Cape fur seals.</p>
+             <p style="margin-top: 10px; font-size: 13px; color: var(--bright-navy-blue);">🍽️ <strong>Eat:</strong> The Fat Fish (Sustainable seafood).</p>
           </div>
         </div>
 
         <div class="timeline-item">
           <p class="timeline-day">Day 03</p>
           <div class="timeline-content">
-             <img src="./assets/images-south_africa/image.handler.php.jpeg" class="timeline-img" alt="River Hike">
-            <h5><strong>Nature Hike & Departure</strong></h5>
-            <p>Guided exploration of the <strong>Kingfisher Trail</strong> and its hidden waterfalls. Gourmet farewell lunch in Wilderness village before your shuttle to George Airport.</p>
+             <img src="./assets/images-south_africa/360_F_118127079_vJqA2O84o7BasDhf6naYZ2mdg4eUDwTz.jpg" class="timeline-img" alt="Tsitsikamma">
+            <h5><strong>Tsitsikamma Adrenaline</strong></h5>
+            <p>Visit Storms River Mouth. Walk the suspension bridge or take a "Blackwater Tubing" trip down the gorge.</p>
+            <div style="background: rgba(0,0,0,0.05); padding: 10px; border-left: 3px solid var(--bright-navy-blue); margin-top: 10px;">
+              <p style="font-size: 13px; margin:0;"><strong>📚 Historical Note:</strong> Learn how these forests were saved from the 19th-century timber rush to become a sanctuary for biodiversity.</p>
+            </div>
           </div>
         </div>
       </div>
 
       <div class="modal-section" style="margin-top:20px; text-align:center; padding: 20px; background: var(--gunmetal); color: white; border-radius: 15px;">
-        <p style="font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px;">Exclusive Rate</p>
-        <p style="font-size: 24px; font-weight: 800; color: #fff;">$350 USD <span style="font-size: 16px; font-weight: 400;">/ person</span></p>
+        <p style="font-size: 14px; text-transform: uppercase;">Accommodation: Views Boutique Hotel & Spa</p>
+        <p style="font-size: 24px; font-weight: 800; color: #fff;">$3,300 CAD <span style="font-size: 16px; font-weight: 400;">/ person (inc. flights)</span></p>
       </div>
     `
   },
   "Knysna": {
-    title: "KNYSNA LAGOON LUXURY & MARINE SAFARI",
+    title: "HERITAGE & MEMORY PACKAGE",
     details: `
       <div class="modal-section" style="margin-bottom: 30px; text-align: center;">
-        <p><em>A sophisticated immersion into the artistic wonders and wildlife of Knysna.</em></p>
+        <p><em>Focus: Cultural roots, colonial history, and the path to reconciliation.</em></p>
       </div>
 
       <div class="timeline">
         <div class="timeline-item">
           <p class="timeline-day">Day 01</p>
           <div class="timeline-content">
-            <img src="./assets/images-south_africa/view-from-rim-flow-pool.jpg" class="timeline-img" alt="Knysna Lagoon">
-            <h5><strong>Lagoon Living</strong></h5>
-            <p>Arrive at <a href="https://kanonkop.co.za/" target="_blank"><strong>Kanonkop House</strong></a>. Embark on a sunset yacht cruise through the iconic <em>Knysna Heads</em>, paired with fresh local oysters and premium wine.</p>
+            <img src="./assets/images-south_africa/image.handler.php.jpeg" class="timeline-img" alt="Mossel Bay">
+            <h5><strong>Mossel Bay – The First Encounter</strong></h5>
+            <p>Visit the Bartolomeu Dias Museum Complex.</p>
+            <div style="background: rgba(0,0,0,0.05); padding: 10px; border-left: 3px solid var(--bright-navy-blue); margin-top: 10px; margin-bottom: 10px;">
+              <p style="font-size: 13px; margin:0; margin-bottom: 5px;"><strong>📚 Historical Event:</strong> The 1488 landing of Portuguese explorers and their first interactions with the indigenous Khoikhoi people.</p>
+              <p style="font-size: 13px; margin:0;"><strong>Why it matters:</strong> This was the "Big Bang" of modern South African history.</p>
+            </div>
+             <p style="font-size: 13px; color: var(--bright-navy-blue);">🍽️ <strong>Eat:</strong> Kaai 4 Braai Restaurant (Traditional open-fire cooking).</p>
           </div>
         </div>
 
         <div class="timeline-item">
           <p class="timeline-day">Day 02</p>
           <div class="timeline-content">
-            <img src="./assets/images-south_africa/beautiful-coastal-landscape-garden-route-south-africa-408813550.jpg.webp" class="timeline-img" alt="Marine Safari">
-            <h5><strong>Ocean Majesty: Marine Safari</strong></h5>
-            <p>A full-day <strong>Ocean Quest</strong> to witness Bottlenose Dolphins and visiting whales in the crystal-clear ocean. This exclusive experience is now part of our signature Knysna itinerary.</p>
+            <img src="./assets/images-south_africa/view-from-rim-flow-pool.jpg" class="timeline-img" alt="Knysna Timber">
+            <h5><strong>Knysna – Timber & Toil</strong></h5>
+            <p>Explore the Knysna Heads and the Millwood Gold Fields.</p>
+            <div style="background: rgba(0,0,0,0.05); padding: 10px; border-left: 3px solid var(--bright-navy-blue); margin-top: 10px;">
+              <p style="font-size: 13px; margin:0; margin-bottom: 5px;"><strong>📚 Historical Event:</strong> The 19th-century timber industry that shaped the region's economy but also led to strict social hierarchies.</p>
+              <p style="font-size: 13px; margin:0;"><strong>Then vs Now:</strong> See how former industrial sites have been reclaimed as cultural hubs.</p>
+            </div>
           </div>
         </div>
 
         <div class="timeline-item">
           <p class="timeline-day">Day 03</p>
           <div class="timeline-content">
-            <img src="./assets/images-south_africa/image.handler.php.jpeg" class="timeline-img" alt="Forest Walk">
-            <h5><strong>Ancient Forests & Island Mornings</strong></h5>
-            <p>A morning walking tour of the <strong>Knysna Forest</strong>, home to elusive elephants. Afternoon spent exploring the shops and cafes of <em>Thesen Islands</em>.</p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <p class="timeline-day">Day 04</p>
-          <div class="timeline-content">
-             <img src="./assets/images-south_africa/Garden-Route-Suedafrika-13.jpg" class="timeline-img" alt="Panoramic Knysna">
-            <h5><strong>Nature Reserve & Panoramic Departure</strong></h5>
-            <p>4x4 excursion to <a href="https://www.featherbednature.co.za/" target="_blank"><strong>Featherbed Nature Reserve</strong></a> before your luxury shuttle departure.</p>
+            <img src="./assets/images-south_africa/Garden-Route-Suedafrika-13.jpg" class="timeline-img" alt="Oudtshoorn">
+            <h5><strong>Oudtshoorn – The Ostrich Palaces</strong></h5>
+            <p>Drive through the Outeniqua Pass to see the "Ostrich Palaces" built by 19th-century feather barons. Visit the CP Nel Museum to understand the Jewish and Afrikaans heritage of the Karoo.</p>
           </div>
         </div>
       </div>
 
       <div class="modal-section" style="margin-top:20px; text-align:center; padding: 20px; background: var(--gunmetal); color: white; border-radius: 15px;">
-        <p style="font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px;">Executive Rate</p>
-        <p style="font-size: 24px; font-weight: 800; color: #fff;">$480 USD <span style="font-size: 16px; font-weight: 400;">/ person</span></p>
+        <p style="font-size: 14px; text-transform: uppercase;">Accommodation: The Turbine Hotel & Spa (Knysna)</p>
+        <p style="font-size: 24px; font-weight: 800; color: #fff;">$3,100 CAD <span style="font-size: 16px; font-weight: 400;">/ person (inc. flights)</span></p>
       </div>
     `
   }
