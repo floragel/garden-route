@@ -227,9 +227,9 @@ window.addEventListener("load", () => {
       });
     });
 
-    // Start with overview
+    // Start with wilderness
     // Add small delay to ensure container dims are computed
-    setTimeout(() => updateRoute("all"), 500); 
+    setTimeout(() => updateRoute("wilderness"), 500); 
   }
 });
 
