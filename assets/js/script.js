@@ -262,7 +262,7 @@ const packageData = {
     title: "THE WILD SPIRIT PACKAGE",
     details: `
       <div class="modal-section" style="margin-bottom: 30px; text-align: center;">
-        <p><em>This 3-day trip is for anyone who wants an adrenaline rush and raw landscapes.</em></p>
+        <p><em>This 3-day trip is for anyone who wants an adrenaline rush and raw landscapes. From towering cliffs to winding rivers, experience the sheer ecological power of the Garden Route.</em></p>
       </div>
 
       <div class="timeline">
@@ -271,8 +271,8 @@ const packageData = {
           <div class="timeline-content">
             <img src="./assets/images-south_africa/images-2.jpeg" class="timeline-img" alt="Wilderness Canoeing">
             <h5><strong>Wilderness & The Sky</strong></h5>
-            <p>We start with canoeing on the Touw River and paragliding from the <a href="https://wildernessresort.co.za/map-of-africa/" target="_blank" style="text-decoration:underline;">"Map of Africa" viewpoint</a>.</p>
-            <p style="margin-top: 10px; font-size: 13px; color: var(--bright-navy-blue);">🍽️ <strong>We'll eat at</strong> <a href="https://www.tripadvisor.com/" target="_blank" style="text-decoration:underline;">Beejha Eats</a> for some organic, farm-to-table food.</p>
+            <p>Your journey begins the moment you touch down. We start with a serene morning of canoeing on the dark, tannin-rich waters of the Touw River, surrounded by dense indigenous birdlife. In the afternoon, the pace shifts dramatically as we go paragliding from the spectacular <a href="https://wildernessresort.co.za/map-of-africa/" target="_blank" style="text-decoration:underline;">"Map of Africa" viewpoint</a>, soaring over the coastline.</p>
+            <p style="margin-top: 10px; font-size: 13px; color: var(--bright-navy-blue);">🍽️ <strong>We'll eat at</strong> <a href="https://www.tripadvisor.com/" target="_blank" style="text-decoration:underline;">Beejha Eats</a> for some organic, farm-to-table food sourced directly from the surrounding valleys.</p>
           </div>
         </div>
 
@@ -281,7 +281,7 @@ const packageData = {
           <div class="timeline-content">
              <img src="./assets/images-south_africa/beautiful-coastal-landscape-garden-route-south-africa-408813550.jpg.webp" class="timeline-img" alt="Robberg">
             <h5><strong>Robberg Marine Safari</strong></h5>
-            <p>We head to Plettenberg Bay to hike the <a href="https://www.capenature.co.za/reserves/robberg-nature-reserve" target="_blank" style="text-decoration:underline;">Robberg Peninsula</a>. If you look down from the cliffs, you can actually see great white sharks and Cape fur seals in the water.</p>
+            <p>We head to Plettenberg Bay to hike the rugged <a href="https://www.capenature.co.za/reserves/robberg-nature-reserve" target="_blank" style="text-decoration:underline;">Robberg Peninsula</a>. This World Heritage site offers a demanding but rewarding 9km loop. If you look down from the dramatic sandstone cliffs, you can actually see great white sharks patrolling the waters and massive colonies of Cape fur seals basking on the rocks below.</p>
           </div>
         </div>
 
@@ -290,9 +290,9 @@ const packageData = {
           <div class="timeline-content">
              <img src="./assets/images-south_africa/360_F_118127079_vJqA2O84o7BasDhf6naYZ2mdg4eUDwTz.jpg" class="timeline-img" alt="Tsitsikamma">
             <h5><strong>Tsitsikamma Adrenaline</strong></h5>
-            <p>We’ll visit <a href="https://www.sanparks.org/parks/garden-route/camps/storms-river" target="_blank" style="text-decoration:underline;">Storms River Mouth</a> to walk the suspension bridge or go "Blackwater Tubing" down the gorge.</p>
+            <p>We’ll visit the iconic <a href="https://www.sanparks.org/parks/garden-route/camps/storms-river" target="_blank" style="text-decoration:underline;">Storms River Mouth</a> to walk the swaying suspension bridge that spans the crashing ocean waves. For the truly brave, we go "Blackwater Tubing" down the narrow, towering gorge.</p>
             <div style="background: rgba(0,0,0,0.05); padding: 10px; border-left: 3px solid var(--bright-navy-blue); margin-top: 10px;">
-              <p style="font-size: 13px; margin:0;"><strong>📚 History Note:</strong> You’ll learn how these forests were almost destroyed by the 19th-century timber rush before they were saved to become a sanctuary for biodiversity.</p>
+              <p style="font-size: 13px; margin:0;"><strong>📚 History Note:</strong> You’ll learn how these majestic ancient forests were almost destroyed by the 19th-century timber rush before they were fiercely protected to become a sanctuary for biodiversity.</p>
             </div>
           </div>
         </div>
@@ -309,7 +309,7 @@ const packageData = {
     title: "HERITAGE & MEMORY PACKAGE",
     details: `
       <div class="modal-section" style="margin-bottom: 30px; text-align: center;">
-        <p><em>This package focuses on cultural roots and the path to reconciliation.</em></p>
+        <p><em>This package focuses on cultural roots, colonial history, and the profound path to reconciliation in modern South Africa.</em></p>
       </div>
 
       <div class="timeline">
@@ -318,11 +318,11 @@ const packageData = {
           <div class="timeline-content">
             <img src="./assets/images-south_africa/image.handler.php.jpeg" class="timeline-img" alt="Mossel Bay">
             <h5><strong>Mossel Bay – The First Encounter</strong></h5>
-            <p>We’ll visit the <a href="https://www.diasmuseum.co.za/" target="_blank" style="text-decoration:underline;">Bartolomeu Dias Museum</a>.</p>
+            <p>We’ll visit the <a href="https://www.diasmuseum.co.za/" target="_blank" style="text-decoration:underline;">Bartolomeu Dias Museum</a>, where you can see a life-size replica of the original caravel ship that survived the Cape of Storms.</p>
             <div style="background: rgba(0,0,0,0.05); padding: 10px; border-left: 3px solid var(--bright-navy-blue); margin-top: 10px; margin-bottom: 10px;">
-              <p style="font-size: 13px; margin:0;"><strong>📚 History Note:</strong> This is where Portuguese explorers first landed in 1488 and met the indigenous Khoikhoi people. It’s basically the "Big Bang" of modern South African history.</p>
+              <p style="font-size: 13px; margin:0;"><strong>📚 History Note:</strong> This is where Portuguese explorers first landed in 1488 and met the indigenous Khoikhoi people. It’s basically the "Big Bang" of modern South African history, setting off centuries of complex global trade and colonization.</p>
             </div>
-             <p style="font-size: 13px; color: var(--bright-navy-blue);">🍽️ <strong>Eat:</strong> <a href="https://kaai4.co.za/" target="_blank" style="text-decoration:underline;">Kaai 4 Braai Restaurant</a> (Traditional open-fire cooking).</p>
+             <p style="font-size: 13px; color: var(--bright-navy-blue);">🍽️ <strong>Eat:</strong> <a href="https://kaai4.co.za/" target="_blank" style="text-decoration:underline;">Kaai 4 Braai Restaurant</a> (Experience authentic, traditional open-fire cooking right on the beach).</p>
           </div>
         </div>
 
@@ -331,9 +331,9 @@ const packageData = {
           <div class="timeline-content">
             <img src="./assets/images-south_africa/view-from-rim-flow-pool.jpg" class="timeline-img" alt="Knysna Timber">
             <h5><strong>Knysna – Timber & Toil</strong></h5>
-            <p>We’ll explore the <a href="https://www.visitknysna.co.za/explore/knysna-heads/" target="_blank" style="text-decoration:underline;">Knysna Heads</a>.</p>
+            <p>We’ll explore the dramatic <a href="https://www.visitknysna.co.za/explore/knysna-heads/" target="_blank" style="text-decoration:underline;">Knysna Heads</a>, two massive sandstone cliffs guarding the entrance to the lagoon, infamous for shipwrecks.</p>
             <div style="background: rgba(0,0,0,0.05); padding: 10px; border-left: 3px solid var(--bright-navy-blue); margin-top: 10px;">
-              <p style="font-size: 13px; margin:0;"><strong>📚 History Note:</strong> We'll learn how the 19th-century timber industry shaped the economy but also created strict social hierarchies. We’ll stay at The Turbine Hotel, which is an old power plant that was reclaimed as a cultural hub.</p>
+              <p style="font-size: 13px; margin:0;"><strong>📚 History Note:</strong> We'll learn how the 19th-century timber industry shaped the economy but also created strict social hierarchies. We’ll stay at The Turbine Hotel, which is an old power plant that was brilliantly reclaimed as a cultural hub, blending industrial history with luxury.</p>
             </div>
           </div>
         </div>
@@ -343,7 +343,7 @@ const packageData = {
           <div class="timeline-content">
             <img src="./assets/images-south_africa/Garden-Route-Suedafrika-13.jpg" class="timeline-img" alt="Oudtshoorn">
             <h5><strong>Oudtshoorn – The Ostrich Palaces</strong></h5>
-            <p>We’ll drive through the Outeniqua Pass to see "Ostrich Palaces" built by wealthy feather barons in the 1800s and visit the <a href="https://www.cpnelmuseum.co.za/" target="_blank" style="text-decoration:underline;">CP Nel Museum</a> to understand the Jewish and Afrikaans heritage of the area.</p>
+            <p>We’ll drive inland through the breathtaking Outeniqua Pass, leaving the lush coast for the arid Little Karoo. Here, we'll see the lavish "Ostrich Palaces" built by wealthy feather barons during the fashion boom in the 1800s. We'll also visit the <a href="https://www.cpnelmuseum.co.za/" target="_blank" style="text-decoration:underline;">CP Nel Museum</a> to understand the unique intertwining of Jewish and Afrikaans heritage in this isolated region.</p>
           </div>
         </div>
       </div>
