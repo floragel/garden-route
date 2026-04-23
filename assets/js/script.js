@@ -182,15 +182,15 @@ window.addEventListener("load", () => {
       } else if (routeId === "wilderness") { // The Wild Spirit
         routeCoords = routeData.wilderness;
         markersToShow = [
-          { coord: locations.george, label: "George" },
+          { coord: locations.george, label: "George (GRJ)" },
           { coord: locations.wilderness, label: "Wilderness" },
-          { coord: locations.plett, label: "Robberg (Plett)" },
-          { coord: locations.tsitsikamma, label: "Storms River" }
+          { coord: locations.plett, label: "Plettenberg Bay" },
+          { coord: locations.tsitsikamma, label: "Tsitsikamma" }
         ];
       } else if (routeId === "knysna") { // Heritage & Memory
         routeCoords = routeData.knysna;
         markersToShow = [
-          { coord: locations.george, label: "George" },
+          { coord: locations.george, label: "George (GRJ)" },
           { coord: locations.mossel_bay, label: "Mossel Bay" },
           { coord: locations.knysna, label: "Knysna" },
           { coord: locations.oudtshoorn, label: "Oudtshoorn" }
